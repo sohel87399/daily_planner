@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="entry-form-page">
+    <h1>➕ Add Study Entry</h1>
+    
+    <form method="POST" class="entry-form">
+        <div class="form-group">
+            <label for="date">Date *</label>
+            <input type="date" id="date" name="date" 
+                   min="{{ start_date.strftime('%Y-%m-%d') }}" 
+                   max="{{ end_date.strftime('%Y-%m-%d') }}" 
+                   value="{{ request.args.get('date', '') }}"
+                   required>
+            <small>Must be between 01/01/2026 and 15/02/2027</small>
+        </div>
+
+        <div class="form-group">
+            <label for="hours_studied">Hours Studied *</label>
+            <input type="number" id="hours_studied" name="hours_studied" 
+                   min="0" max="24" step="0.5" value="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="subject">Subject Category *</label>
+            <select id="subject" name="subject" required>
+                <option value="">Select Subject</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Data Structures">Data Structures</option>
+                <option value="Algorithms">Algorithms</option>
+                <option value="Computer Organization">Computer Organization</option>
+                <option value="Operating Systems">Operating Systems</option>
+                <option value="DBMS">DBMS</option>
+                <option value="Computer Networks">Computer Networks</option>
+                <option value="Theory of Computation">Theory of Computation</option>
+                <option value="Compiler Design">Compiler Design</option>
+                <option value="Digital Logic">Digital Logic</option>
+                <option value="Programming">Programming</option>
+                <option value="Aptitude">Aptitude</option>
+                <option value="Mixed">Mixed Topics</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="topics">Topics Covered *</label>
+            <input type="text" id="topics" name="topics" 
+                   placeholder="e.g., Binary Trees, Graph Traversal" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">What I Did Today (5 hours) *</label>
+            <textarea id="description" name="description" rows="5" 
+                      placeholder="Describe your study session in detail..." required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="mood">Mood *</label>
+            <select id="mood" name="mood" required>
+                <option value="">Select Mood</option>
+                <option value="Productive">😊 Productive</option>
+                <option value="Average">😐 Average</option>
+                <option value="Bad">😔 Bad</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="completed">Completion Status *</label>
+            <select id="completed" name="completed" required>
+                <option value="yes">✅ Completed (5 hours)</option>
+                <option value="no">❌ Not Completed</option>
+            </select>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Entry</button>
+            <a href="{{ url_for('calendar') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

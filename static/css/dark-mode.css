@@ -1,0 +1,464 @@
+/* ========================================
+   DARK MODE STYLES
+   ======================================== */
+
+/* Dark Mode Variables - Focus Mode */
+:root {
+    --bg-primary-light: #F8FAFC;
+    --bg-primary-dark: #0F172A;
+    
+    --card-bg-light: #ffffff;
+    --card-bg-dark: #1E293B;
+    
+    --text-primary-light: #0F172A;
+    --text-primary-dark: #F1F5F9;
+    
+    --text-secondary-light: #475569;
+    --text-secondary-dark: #94A3B8;
+    
+    --border-light: #E2E8F0;
+    --border-dark: #334155;
+    
+    --navbar-bg-light: #ffffff;
+    --navbar-bg-dark: #1E293B;
+    
+    --input-bg-light: #ffffff;
+    --input-bg-dark: #334155;
+    
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.5);
+    
+    /* Dark Mode Focus Colors */
+    --dark-accent-blue: #3B82F6;
+    --dark-success: #22C55E;
+}
+
+/* Dark Mode Body */
+body.dark-mode {
+    background: #0F172A;
+    color: var(--text-primary-dark);
+}
+
+/* Dark Mode Navbar */
+body.dark-mode .navbar {
+    background: var(--navbar-bg-dark);
+    box-shadow: 0 2px 10px var(--shadow-dark);
+}
+
+body.dark-mode .nav-brand {
+    color: #3B82F6;
+}
+
+body.dark-mode .nav-links a {
+    color: var(--text-primary-dark);
+}
+
+body.dark-mode .nav-links a:hover {
+    color: #3B82F6;
+}
+
+body.dark-mode .nav-user {
+    color: #3B82F6;
+}
+
+/* Dark Mode Cards */
+body.dark-mode .login-card,
+body.dark-mode .stat-card,
+body.dark-mode .quote-card,
+body.dark-mode .progress-section,
+body.dark-mode .comparison-section,
+body.dark-mode .calendar-page,
+body.dark-mode .entry-form-page,
+body.dark-mode .analytics-page {
+    background: var(--card-bg-dark);
+    color: var(--text-primary-dark);
+    box-shadow: 0 5px 15px var(--shadow-dark);
+}
+
+body.dark-mode .login-card h2,
+body.dark-mode .progress-section h2,
+body.dark-mode .comparison-section h2,
+body.dark-mode .calendar-page h1,
+body.dark-mode .entry-form-page h1,
+body.dark-mode .analytics-page h1,
+body.dark-mode .analytics-section h2 {
+    color: var(--text-primary-dark);
+}
+
+body.dark-mode .subtitle,
+body.dark-mode .login-info p,
+body.dark-mode .stat-label {
+    color: var(--text-secondary-dark);
+}
+
+/* Dark Mode Forms */
+body.dark-mode .form-group label {
+    color: var(--text-primary-dark);
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+    background: var(--input-bg-dark);
+    color: var(--text-primary-dark);
+    border-color: var(--border-dark);
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group select:focus,
+body.dark-mode .form-group textarea:focus {
+    border-color: #3B82F6;
+    background: #334155;
+}
+
+body.dark-mode .form-group small {
+    color: var(--text-secondary-dark);
+}
+
+/* Dark Mode Buttons */
+body.dark-mode .btn-secondary {
+    background: #4a4a4a;
+    color: var(--text-primary-dark);
+}
+
+body.dark-mode .btn-secondary:hover {
+    background: #5a5a5a;
+}
+
+/* Dark Mode Calendar */
+body.dark-mode .calendar-header {
+    background: #3B82F6;
+    color: white;
+}
+
+body.dark-mode .calendar-day {
+    background: #424242;
+    border-color: var(--border-dark);
+    color: var(--text-primary-dark);
+}
+
+body.dark-mode .calendar-day.completed {
+    background: #14532d;
+    border-color: #22C55E;
+}
+
+body.dark-mode .calendar-day.partial {
+    background: #78350f;
+    border-color: #F59E0B;
+}
+
+body.dark-mode .calendar-day.missed {
+    background: #7f1d1d;
+    border-color: #DC2626;
+}
+
+body.dark-mode .calendar-day.future {
+    background: #3a3a3a;
+    border-color: var(--border-dark);
+}
+
+body.dark-mode .day-link {
+    color: #3B82F6;
+}
+
+/* Dark Mode Comparison Cards */
+body.dark-mode .comparison-card {
+    background: linear-gradient(135deg, #1E40AF, #3B82F6);
+    color: white;
+}
+
+/* Dark Mode Table */
+body.dark-mode .analytics-table table {
+    color: var(--text-primary-dark);
+}
+
+body.dark-mode .analytics-table th {
+    background: #3B82F6;
+    color: white;
+}
+
+body.dark-mode .analytics-table td {
+    border-bottom-color: var(--border-dark);
+}
+
+/* Dark Mode Alerts */
+body.dark-mode .alert-success {
+    background: #14532d;
+    color: #22C55E;
+    border-left-color: #22C55E;
+}
+
+body.dark-mode .alert-error {
+    background: #7f1d1d;
+    color: #DC2626;
+    border-left-color: #DC2626;
+}
+
+/* Dark Mode Dashboard */
+body.dark-mode .dashboard h1 {
+    color: var(--text-primary-dark);
+}
+
+body.dark-mode .quote-card p {
+    color: #3B82F6;
+}
+
+/* Dark Mode Entry Date */
+body.dark-mode .entry-date {
+    color: #3B82F6;
+}
+
+/* Dark Mode Calendar Controls */
+body.dark-mode .calendar-controls h2 {
+    color: #3B82F6;
+}
+
+/* Dark Mode Legend */
+body.dark-mode .calendar-legend {
+    color: var(--text-primary-dark);
+}
+
+/* ========================================
+   THEME TOGGLE SWITCH
+   ======================================== */
+
+.theme-toggle {
+    display: inline-block;
+    position: relative;
+}
+
+.theme-switch-checkbox {
+    display: none;
+}
+
+.theme-switch-label {
+    display: block;
+    width: 50px;
+    height: 26px;
+    background: #e0e0e0;
+    border-radius: 13px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s;
+}
+
+body.dark-mode .theme-switch-label {
+    background: #3B82F6;
+}
+
+.theme-switch-inner {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 13px;
+    transition: all 0.3s;
+}
+
+.theme-switch-inner::before {
+    content: '☀️';
+    position: absolute;
+    left: 6px;
+    top: 3px;
+    font-size: 16px;
+    transition: opacity 0.3s;
+}
+
+body.dark-mode .theme-switch-inner::before {
+    content: '🌙';
+    opacity: 1;
+}
+
+.theme-switch-switch {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.theme-switch-checkbox:checked + .theme-switch-label .theme-switch-switch {
+    transform: translateX(24px);
+}
+
+/* Smooth Transition for Theme Change */
+body,
+.navbar,
+.login-card,
+.stat-card,
+.quote-card,
+.progress-section,
+.comparison-section,
+.calendar-page,
+.entry-form-page,
+.analytics-page,
+.calendar-day,
+.form-group input,
+.form-group select,
+.form-group textarea,
+.btn-secondary {
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Dark Mode Scrollbar */
+body.dark-mode::-webkit-scrollbar {
+    width: 12px;
+}
+
+body.dark-mode::-webkit-scrollbar-track {
+    background: #323232;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb {
+    background: #555555;
+    border-radius: 6px;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb:hover {
+    background: #666666;
+}
+
+/* Dark Mode Progress Bar */
+body.dark-mode .progress-bar {
+    background: #4a4a4a;
+}
+
+body.dark-mode .progress-text {
+    color: #3B82F6;
+}
+
+/* Dark Mode Login Page */
+body.dark-mode .login-container {
+    background: #0F172A;
+}
+
+body.dark-mode .login-card h1 {
+    color: #3B82F6;
+}
+
+/* Responsive Dark Mode */
+@media (max-width: 768px) {
+    .theme-toggle {
+        margin: 10px 0;
+    }
+}
+
+
+/* Login Page Theme Toggle */
+.login-theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.login-theme-toggle .theme-toggle {
+    display: inline-block;
+}
+
+/* Additional Dark Mode Enhancements */
+body.dark-mode .comparison-vs {
+    color: #3B82F6;
+}
+
+/* Dark Mode Input Placeholder */
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #6a6a7a;
+}
+
+/* Dark Mode Select Arrow */
+body.dark-mode select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e0e0e0' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 30px;
+}
+
+/* Dark Mode Hover Effects */
+body.dark-mode .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+body.dark-mode .calendar-day:hover:not(.empty):not(.out-of-range) {
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+}
+
+/* Dark Mode Link Colors */
+body.dark-mode a {
+    color: #3B82F6;
+}
+
+body.dark-mode a:hover {
+    color: #2563EB;
+}
+
+/* Dark Mode Chart Background (for Chart.js) */
+body.dark-mode .chart-container {
+    background: var(--card-bg-dark);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Smooth Theme Transition Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+body.dark-mode {
+    animation: fadeIn 0.3s ease;
+}
+
+body.light-mode {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Dark Mode Focus States */
+body.dark-mode input:focus,
+body.dark-mode select:focus,
+body.dark-mode textarea:focus {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+/* Dark Mode Button Hover */
+body.dark-mode .btn:hover {
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+}
+
+/* Dark Mode Calendar Day Numbers */
+body.dark-mode .day-number {
+    color: var(--text-primary-dark);
+}
+
+/* Dark Mode Stat Values */
+body.dark-mode .stat-value {
+    color: #3B82F6;
+}
+
+/* Dark Mode Comparison Percentage */
+body.dark-mode .comparison-percentage {
+    color: white;
+}
+
+/* Print Styles for Dark Mode */
+@media print {
+    body.dark-mode {
+        background: white;
+        color: black;
+    }
+    
+    body.dark-mode .navbar,
+    body.dark-mode .theme-toggle {
+        display: none;
+    }
+}

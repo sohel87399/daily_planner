@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="entry-form-page">
+    <h1>✏️ Edit Study Entry</h1>
+    <p class="entry-date">Date: {{ entry.date.strftime('%d/%m/%Y') }}</p>
+    
+    <form method="POST" class="entry-form">
+        <div class="form-group">
+            <label for="hours_studied">Hours Studied *</label>
+            <input type="number" id="hours_studied" name="hours_studied" 
+                   min="0" max="24" step="0.5" value="{{ entry.hours_studied }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="subject">Subject Category *</label>
+            <select id="subject" name="subject" required>
+                <option value="Mathematics" {% if entry.subject == 'Mathematics' %}selected{% endif %}>Mathematics</option>
+                <option value="Data Structures" {% if entry.subject == 'Data Structures' %}selected{% endif %}>Data Structures</option>
+                <option value="Algorithms" {% if entry.subject == 'Algorithms' %}selected{% endif %}>Algorithms</option>
+                <option value="Computer Organization" {% if entry.subject == 'Computer Organization' %}selected{% endif %}>Computer Organization</option>
+                <option value="Operating Systems" {% if entry.subject == 'Operating Systems' %}selected{% endif %}>Operating Systems</option>
+                <option value="DBMS" {% if entry.subject == 'DBMS' %}selected{% endif %}>DBMS</option>
+                <option value="Computer Networks" {% if entry.subject == 'Computer Networks' %}selected{% endif %}>Computer Networks</option>
+                <option value="Theory of Computation" {% if entry.subject == 'Theory of Computation' %}selected{% endif %}>Theory of Computation</option>
+                <option value="Compiler Design" {% if entry.subject == 'Compiler Design' %}selected{% endif %}>Compiler Design</option>
+                <option value="Digital Logic" {% if entry.subject == 'Digital Logic' %}selected{% endif %}>Digital Logic</option>
+                <option value="Programming" {% if entry.subject == 'Programming' %}selected{% endif %}>Programming</option>
+                <option value="Aptitude" {% if entry.subject == 'Aptitude' %}selected{% endif %}>Aptitude</option>
+                <option value="Mixed" {% if entry.subject == 'Mixed' %}selected{% endif %}>Mixed Topics</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="topics">Topics Covered *</label>
+            <input type="text" id="topics" name="topics" value="{{ entry.topics }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">What I Did Today *</label>
+            <textarea id="description" name="description" rows="5" required>{{ entry.description }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="mood">Mood *</label>
+            <select id="mood" name="mood" required>
+                <option value="Productive" {% if entry.mood == 'Productive' %}selected{% endif %}>😊 Productive</option>
+                <option value="Average" {% if entry.mood == 'Average' %}selected{% endif %}>😐 Average</option>
+                <option value="Bad" {% if entry.mood == 'Bad' %}selected{% endif %}>😔 Bad</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="completed">Completion Status *</label>
+            <select id="completed" name="completed" required>
+                <option value="yes" {% if entry.completed %}selected{% endif %}>✅ Completed</option>
+                <option value="no" {% if not entry.completed %}selected{% endif %}>❌ Not Completed</option>
+            </select>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Update Entry</button>
+            <a href="{{ url_for('calendar') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

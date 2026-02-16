@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GATE 2026-2027 Daily Planner{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-mode.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme-customizer.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="light-mode" data-username="{{ session.username if session.username else '' }}">
+    {% if session.username %}
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">🎯 GATE Planner</div>
+            <div class="nav-links">
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('calendar') }}">Calendar</a>
+                <a href="{{ url_for('add_entry') }}">Add Entry</a>
+                <a href="{{ url_for('analytics') }}">Analytics</a>
+                <span class="nav-user">👤 {{ session.username.capitalize() }}</span>
+                
+                <!-- Dark Mode Toggle -->
+                <div class="theme-toggle">
+                    <input type="checkbox" id="theme-switch" class="theme-switch-checkbox">
+                    <label for="theme-switch" class="theme-switch-label">
+                        <span class="theme-switch-inner"></span>
+                        <span class="theme-switch-switch"></span>
+                    </label>
+                </div>
+                
+                <a href="{{ url_for('logout') }}" class="btn-logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+    {% endif %}
+
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Theme Customizer -->
+    {% if session.username %}
+    <div class="theme-customizer">
+        <button class="customizer-toggle" title="Theme Customizer (Ctrl+Shift+T)">
+            🎨
+        </button>
+        
+        <div class="customizer-panel">
+            <div class="customizer-header">
+                <h3>🎨 Theme Customizer</h3>
+                <p>Personalize your study space</p>
+            </div>
+            
+            <!-- Circular Color Wheel -->
+            <div class="color-wheel-container">
+                <div class="color-wheel">
+                    <div class="color-option active" style="background: #2563EB;" data-color="#2563EB" title="Professional Blue"></div>
+                    <div class="color-option" style="background: #0891B2;" data-color="#0891B2" title="Ocean Teal"></div>
+                    <div class="color-option" style="background: #16A34A;" data-color="#16A34A" title="Success Green"></div>
+                    <div class="color-option" style="background: #7C3AED;" data-color="#7C3AED" title="Royal Purple"></div>
+                    <div class="color-option" style="background: #EA580C;" data-color="#EA580C" title="Sunset Orange"></div>
+                    <div class="color-option" style="background: #E11D48;" data-color="#E11D48" title="Rose Pink"></div>
+                    <div class="color-option" style="background: #4F46E5;" data-color="#4F46E5" title="Indigo Deep"></div>
+                    <div class="color-option" style="background: #059669;" data-color="#059669" title="Emerald"></div>
+                </div>
+                <div class="color-wheel-center">
+                    Professional Blue
+                </div>
+            </div>
+            
+            <!-- Theme Mode Selector -->
+            <div class="theme-mode-selector">
+                <h4>Display Mode</h4>
+                <div class="mode-options">
+                    <button class="mode-btn active" data-mode="light">☀️ Light</button>
+                    <button class="mode-btn" data-mode="dark">🌙 Dark</button>
+                    <button class="mode-btn" data-mode="custom">✨ Custom</button>
+                </div>
+            </div>
+            
+            <!-- Color Preview -->
+            <div class="color-preview">
+                <h4>Color Preview</h4>
+                <div class="preview-items">
+                    <div class="preview-item">
+                        <span class="preview-label">Primary</span>
+                        <div class="preview-color" style="background: #2563EB;"></div>
+                    </div>
+                    <div class="preview-item">
+                        <span class="preview-label">Hover</span>
+                        <div class="preview-color" style="background: #1E40AF;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="customizer-actions">
+                <button class="reset-btn">🔄 Reset</button>
+                <button class="save-btn">💾 Save Theme</button>
+            </div>
+            
+            <!-- Success Message -->
+            <div class="save-success">Theme saved successfully!</div>
+        </div>
+    </div>
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme-toggle.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme-customizer.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

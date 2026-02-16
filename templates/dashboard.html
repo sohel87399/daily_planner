@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard">
+    <h1>Welcome, {{ username.capitalize() }}! 👋</h1>
+    
+    <div id="quote-container" class="quote-card">
+        <p id="daily-quote">Loading motivational quote...</p>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">📚</div>
+            <div class="stat-value">{{ stats.total_days }}</div>
+            <div class="stat-label">Total Days Logged</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">✅</div>
+            <div class="stat-value">{{ stats.completed_days }}</div>
+            <div class="stat-label">Days Completed</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">⏱️</div>
+            <div class="stat-value">{{ stats.total_hours }}</div>
+            <div class="stat-label">Total Hours Studied</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <div class="stat-value">{{ stats.completion_percentage }}%</div>
+            <div class="stat-label">Completion Rate</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🔥</div>
+            <div class="stat-value">{{ stats.current_streak }}</div>
+            <div class="stat-label">Current Streak</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🏆</div>
+            <div class="stat-value">{{ stats.longest_streak }}</div>
+            <div class="stat-label">Longest Streak</div>
+        </div>
+    </div>
+
+    <div class="progress-section">
+        <h2>Your Progress to GATE 2027</h2>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: {{ stats.completion_percentage }}%"></div>
+        </div>
+        <p class="progress-text">{{ stats.completion_percentage }}% Complete</p>
+    </div>
+
+    <div class="comparison-section">
+        <h2>🏅 Friendly Competition</h2>
+        <div class="comparison-cards">
+            <div class="comparison-card">
+                <h3>You</h3>
+                <div class="comparison-percentage">{{ stats.completion_percentage }}%</div>
+            </div>
+            <div class="comparison-vs">VS</div>
+            <div class="comparison-card">
+                <h3>{{ stats.partner }}</h3>
+                <div class="comparison-percentage">{{ stats.partner_percentage }}%</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="quick-actions">
+        <a href="{{ url_for('add_entry') }}" class="btn btn-primary">➕ Add Today's Entry</a>
+        <a href="{{ url_for('calendar') }}" class="btn btn-secondary">📅 View Calendar</a>
+        <a href="{{ url_for('analytics') }}" class="btn btn-secondary">📈 View Analytics</a>
+    </div>
+</div>
+
+<script>
+    fetch('/api/quote')
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('daily-quote').textContent = '"' + data.quote + '"';
+        });
+</script>
+{% endblock %}

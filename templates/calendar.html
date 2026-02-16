@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="calendar-page">
+    <h1>📅 Study Calendar</h1>
+    
+    <div class="calendar-controls">
+        {% if month == 1 %}
+            <a href="{{ url_for('calendar', year=year-1, month=12) }}" class="btn">← Previous</a>
+        {% else %}
+            <a href="{{ url_for('calendar', year=year, month=month-1) }}" class="btn">← Previous</a>
+        {% endif %}
+        
+        <h2>{{ ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][month-1] }} {{ year }}</h2>
+        
+        {% if month == 12 %}
+            <a href="{{ url_for('calendar', year=year+1, month=1) }}" class="btn">Next →</a>
+        {% else %}
+            <a href="{{ url_for('calendar', year=year, month=month+1) }}" class="btn">Next →</a>
+        {% endif %}
+    </div>
+
+    <div class="calendar-legend">
+        <span><span class="legend-box completed"></span> Completed (5h)</span>
+        <span><span class="legend-box partial"></span> Partial</span>
+        <span><span class="legend-box missed"></span> Missed</span>
+        <span><span class="legend-box future"></span> Future</span>
+    </div>
+
+    <div class="calendar-grid">
+        <div class="calendar-header">Sun</div>
+        <div class="calendar-header">Mon</div>
+        <div class="calendar-header">Tue</div>
+        <div class="calendar-header">Wed</div>
+        <div class="calendar-header">Thu</div>
+        <div class="calendar-header">Fri</div>
+        <div class="calendar-header">Sat</div>
+
+        {% for i in range(first_weekday) %}
+            <div class="calendar-day empty"></div>
+        {% endfor %}
+
+        {% for day in range(1, days_in_month + 1) %}
+            {% set date_str = '%04d-%02d-%02d'|format(year, month, day) %}
+            {% set log = logs.get(date_str) %}
+            
+            <div class="calendar-day {% if log %}{% if log.completed %}completed{% elif log.hours_studied >= 3 %}partial{% else %}missed{% endif %}{% else %}future{% endif %}">
+                <div class="day-number">{{ day }}</div>
+                {% if log %}
+                    <div class="day-info">
+                        <div>{{ log.hours_studied }}h</div>
+                        <a href="{{ url_for('edit_entry', entry_id=log._id) }}" class="day-link">Edit</a>
+                    </div>
+                {% else %}
+                    <a href="{{ url_for('add_entry') }}?date={{ date_str }}" class="day-link">Add</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
