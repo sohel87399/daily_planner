@@ -2,6 +2,10 @@
 
 A full-stack web application for tracking daily 5-hour study sessions for GATE exam preparation.
 
+## 🌐 Live Demo
+
+**[Visit Live Website](https://daily-planner-exzh.onrender.com)**
+
 ## Features
 
 - 🔐 Secure login system for Sohel and Anju
